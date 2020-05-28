@@ -1,5 +1,6 @@
 name: Codecov
-  uses: codecov/codecov-action@v1.0.7
+  uses:
+    - codecov/codecov-action@v1.0.7
   with:
     name:
     token: 9f44a821-9c3a-4adf-8f8f-6f99bc153a11
