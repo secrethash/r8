@@ -1,8 +1,8 @@
 <?php
 
-namespace Codebyray\ReviewRateable\Test;
+namespace Secrethash\R8\Test;
 
-use Codebyray\ReviewRateable\ReviewRateableServiceProvider;
+use Secrethash\R8\R8ServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -24,7 +24,7 @@ abstract class TestCase extends Orchestra
      */
     protected function getPackageProviders($app)
     {
-        return [ReviewRateableServiceProvider::class];
+        return [R8ServiceProvider::class];
     }
 
     /**

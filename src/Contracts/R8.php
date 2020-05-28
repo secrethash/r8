@@ -1,10 +1,10 @@
 <?php
 
-namespace Codebyray\ReviewRateable\Contracts;
+namespace Secrethash\R8\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 
-interface ReviewRateable
+interface R8
 {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
@@ -23,28 +23,29 @@ interface ReviewRateable
      * @param $round
      * @return mixed
      */
-    public function averageCustomerServiceRating($round = null);
+    // public function averageCustomerServiceRating($round = null);
+    public function averageRatingType($round = null);
 
     /**
      *
      * @param $round
      * @return mixed
      */
-    public function averageQualityRating($round = null);
+    // public function averageQualityRating($round = null);
 
     /**
      *
      * @param $round
      * @return mixed
      */
-    public function averageFriendlyRating($round = null);
+    // public function averageFriendlyRating($round = null);
 
     /**
      *
      * @param $round
      * @return mixed
      */
-    public function averagePricingRating($round = null);
+    // public function averagePricingRating($round = null);
 
     /**
      *
@@ -56,25 +57,26 @@ interface ReviewRateable
      *
      * @return mixed
      */
-    public function countCustomerServiceRating();
+    // public function countCustomerServiceRating();
+    public function countTypeRating();
 
     /**
      *
      * @return mixed
      */
-    public function countQualityRating();
+    // public function countQualityRating();
 
     /**
      *
      * @return mixed
      */
-    public function countFriendlyRating();
+    // public function countFriendlyRating();
 
     /**
      *
      * @return mixed
      */
-    public function countPriceRating();
+    // public function countPriceRating();
 
     /**
      *

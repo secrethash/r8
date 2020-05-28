@@ -1,9 +1,13 @@
 {
-    "name": "codebyray/laravel-review-rateable",
-    "description": "Review & Rating system for Laravel 5",
+    "name": "secrethash/r8",
+    "description": "Review & Rating system for Laravel",
     "keywords": ["rating", "Ratable", "laravel", "Review-Rateable", "reviewable"],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Shashwat Mishra",
+            "email": "secrethash96@gmail.com"
+        },
         {
             "name": "CodebyRay",
             "email": "dev@codebyray.com"
@@ -12,8 +16,8 @@
     "minimum-stability": "dev",
     "require": {
         "php" : "^7.2",
-        "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0"|^7.0",
-        "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0""
+        "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.3|^7.0|^8.0",
@@ -21,18 +25,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Codebyray\\ReviewRateable\\": "src"
+            "Secrethash\\R8\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Codebyray\\ReviewRateable\\Test\\": "tests"
+            "Secrethash\\R8\\Test\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Codebyray\\ReviewRateable\\ReviewRateableServiceProvider"
+                "Secrethash\\R8\\R8ServiceProvider"
             ]
         }
     },
