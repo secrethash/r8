@@ -9,7 +9,7 @@ interface R8
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function ratings();
+    public function review();
 
     /**
      *
@@ -24,7 +24,7 @@ interface R8
      * @return mixed
      */
     // public function averageCustomerServiceRating($round = null);
-    public function averageRatingType($round = null);
+    // public function averageRatingType($round = null);
 
     /**
      *
@@ -58,7 +58,7 @@ interface R8
      * @return mixed
      */
     // public function countCustomerServiceRating();
-    public function countTypeRating();
+    // public function countTypeRating();
 
     /**
      *
@@ -98,7 +98,7 @@ interface R8
      * @param $parent
      * @return mixed
      */
-    public function rating($data, Model $author, Model $parent = null);
+    public function CreateReview($data, Model $author, Model $parent = null);
 
     /**
      *
@@ -107,7 +107,7 @@ interface R8
      * @param $parent
      * @return mixed
      */
-    public function updateRating($id, $data, Model $parent = null);
+    public function updateReview($id, $data, Model $parent = null);
 
     /**
      *
@@ -115,7 +115,7 @@ interface R8
      * @param $sort
      * @return mixed
      */
-    public function getAllRatings($id, $sort = 'desc');
+    public function getReviews($id, $sort = 'desc');
 
     /**
      *
@@ -123,7 +123,7 @@ interface R8
      * @param $sort
      * @return mixed
      */
-    public function getApprovedRatings($id, $sort = 'desc');
+    public function approvedReviews($id, $sort = 'desc');
 
     /**
      *
@@ -131,7 +131,7 @@ interface R8
      * @param $sort
      * @return mixed
      */
-    public function getNotApprovedRatings($id, $sort = 'desc');
+    public function notApprovedReviews($id, $sort = 'desc');
 
     /**
      * @param $id
@@ -139,7 +139,7 @@ interface R8
      * @param $sort
      * @return mixed
      */
-    public function getRecentRatings($id, $limit = 5, $sort = 'desc');
+    public function recentReviews($id, $limit = 5, $sort = 'desc');
 
     /**
      * @param $id
@@ -148,12 +148,12 @@ interface R8
      * @param $sort
      * @return mixed
      */
-    public function getRecentUserRatings($id, $limit = 5, $approved = true, $sort = 'desc');
+    public function recentUserReviews($id, $limit = 5, $approved = true, $sort = 'desc');
 
     /**
      *
      * @param $id
      * @return mixed
      */
-    public function deleteRating($id);
+    public function deleteReview($id);
 }
