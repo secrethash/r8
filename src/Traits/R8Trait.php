@@ -4,14 +4,14 @@ namespace Secrethash\R8\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Secrethash\R8\Models\Review;
-use Secrethash\R8\Models\ReviewType;
+use Secrethash\R8\Models\Rating;
 
 trait R8Trait
 {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function review()
+    public function reviews()
     {
         return $this->morphMany(Review::class, 'reviewable');
 	}

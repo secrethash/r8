@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateRatingRateTypeTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('rating_rate_type', function (Blueprint $table) {
+			$table->id();
+			$table->foreignId('rating_id')->constrained();
+			$table->foreignId('rate_type_id')->constrained();
+			$table->float('value');
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('rating_rate_type');
+    }
+}

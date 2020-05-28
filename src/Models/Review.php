@@ -30,11 +30,11 @@ class Review extends Model
     /**
 	 * Type of Review
 	 * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function type()
+    public function ratings()
     {
-        return $this->belongsToMany(ReviewType::class, 'review_r8type');
+        return $this->hasMany(Rating::class);
 	}
 
     /**
@@ -67,7 +67,15 @@ class Review extends Model
 		}
 
 		return $reviews;
-    }
+	}
+	
+	/**
+	 * Count the Number of Reviews
+	 */
+	public function count()
+	{
+		// $this->count()
+	}
 
 
     /**

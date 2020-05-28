@@ -5,10 +5,10 @@ namespace Secrethash\R8\Models;
 use Illuminate\Database\Eloquent\Model;
 use Secrethash\R8\Models\Review;
 
-class ReviewType extends Model
+class RateType extends Model
 {
 
-	protected $table = "r8types";
+	protected $table = "rate_types";
 
 	protected $gaurded = ['id','created_at'];
 
@@ -18,9 +18,9 @@ class ReviewType extends Model
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
 
-	public function reviews()
+	public function ratings()
 	{
-		return $this->belongsToMany(Review::class, 'review_r8types');
+		return $this->belongsToMany(Rating::class, 'rating_rate_type')->withPivot('value');
 	}
 
 }

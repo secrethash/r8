@@ -9,15 +9,12 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->unsignedBigInteger('type');
+            $table->string('title')->nullable();
+            $table->string('body')->nullable();
             $table->enum('recommend', ['Yes', 'No'])->nullable();
-            $table->string('title');
-            $table->string('body');
 			$table->boolean('approved')->default(0);
 			$table->morphs('rateable');
 			$table->timestamps();
-			
-			$table->foreign('type')->references('id')->on('review_types');
         });
     }
 
