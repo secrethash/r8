@@ -3,14 +3,14 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReviewTypesTable extends Migration
+class CreateReviewR8TypeTable extends Migration
 {
     public function up()
     {
-        Schema::create('review_types', function (Blueprint $table) {
+        Schema::create('review_r8type', function (Blueprint $table) {
 			$table->id();
-			$table->string('slug');
-			$table->string('name');
+			$table->foreignId('review_id')->constrained();
+			$table->foreignId('r8type_id')->constrained();
 			$table->float('value');
             $table->timestamps();
         });
@@ -18,6 +18,6 @@ class CreateReviewTypesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('review_types');
+        Schema::dropIfExists('review_r8type');
     }
 }

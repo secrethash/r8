@@ -10,8 +10,7 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->unsignedBigInteger('type');
-            $table->integer('rating');
-            $table->enum('recommend', ['Yes', 'No']);
+            $table->enum('recommend', ['Yes', 'No'])->nullable();
             $table->string('title');
             $table->string('body');
 			$table->boolean('approved')->default(0);

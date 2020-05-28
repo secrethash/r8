@@ -4,6 +4,7 @@ namespace Secrethash\R8\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Secrethash\R8\Models\Review;
+use Secrethash\R8\Models\ReviewType;
 
 trait R8Trait
 {
@@ -12,7 +13,7 @@ trait R8Trait
      */
     public function review()
     {
-        return $this->morphMany(Review::class, 'rateable');
+        return $this->morphMany(Review::class, 'reviewable');
 	}
 	
     /**
@@ -27,10 +28,10 @@ trait R8Trait
       $where = $onlyApproved ? [['approved', '1']] : [];
 
       if ($round) {
-            return $this->review()
-              ->selectRaw('ROUND(AVG(rating), '.$round.') as average')
-              ->where($where)
-              ->pluck('average');
+            $review = $this->review()
+							->where($where)
+							->get();
+			//
         }
 		$average = $this->review()
 						->selectRaw('AVG(rating) as average')

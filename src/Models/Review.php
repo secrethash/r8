@@ -28,11 +28,13 @@ class Review extends Model
 	}
 	
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * Type of Review
+	 * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function type()
     {
-        return $this->belongsTo(ReviewType::class);
+        return $this->belongsToMany(ReviewType::class, 'review_r8type');
 	}
 
     /**
