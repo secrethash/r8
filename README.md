@@ -1,4 +1,7 @@
 # Laravel Review Rateable
+
+> This repository has been forked from [codebyray/laravel-review-rateable](https://github.com/codebyray/laravel-review-rateable.git) 
+
 Review Rateable system for laravel 5. and 6. You can rate your models by:
 - Overall Rating
 - Customer Service Rating
