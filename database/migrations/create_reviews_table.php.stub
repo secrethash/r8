@@ -13,6 +13,7 @@ class CreateReviewsTable extends Migration
             $table->string('body')->nullable();
             $table->enum('recommend', ['Yes', 'No'])->nullable();
 			$table->boolean('approved')->default(0);
+			$table->foreignId('user_id')->constrained();
 			$table->morphs('reviewable');
 			$table->timestamps();
         });
