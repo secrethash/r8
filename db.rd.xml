@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created in WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
 <!--
-	To Work on this Database Relationship Diagram,
+	To Work on this Database Entity Relationship Diagram,
 	1). Go to https://ondras.zarovi.cz/sql/demo/?keyword=default
 	2). Click "Save/Load" on the sidebar
 	3). Copy this XML and paste it there and click "Load XML".
@@ -42,7 +42,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="140" y="103" name="Reviews">
+</datatypes><table x="216" y="183" name="Reviews">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -68,13 +68,17 @@
 <part>id</part>
 </key>
 </table>
-<table x="381" y="203" name="Ratings">
+<table x="498" y="103" name="Ratings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="review_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Reviews" row="id" />
+</row>
+<row name="type_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Rate_Type" row="id" />
 </row>
 <row name="value" null="1" autoincrement="0">
 <datatype>DECIMAL</datatype>
@@ -83,7 +87,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="903" y="201" name="Rate_Type">
+<table x="803" y="274" name="Rate_Type">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -97,26 +101,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="614" y="301" name="Rating_Rate_Type">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="rating_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Ratings" row="id" />
-</row>
-<row name="rate_type_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Rate_Type" row="id" />
-</row>
-<row name="value" null="1" autoincrement="0">
-<datatype>DECIMAL</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="405" y="402" name="User">
+<table x="704" y="473" name="User">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -139,7 +124,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="103" y="401" name="review_user">
+<table x="434" y="346" name="review_user">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

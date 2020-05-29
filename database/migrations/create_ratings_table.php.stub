@@ -10,8 +10,11 @@ class CreateRatingsTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('review_id')->constrained();
+			$table->unsignedBigInteger('type_id');
 			$table->float('value');
-            $table->timestamps();
+			$table->timestamps();
+			
+			$table->foreign('type_id')->references('id')->on('rate_types');
         });
     }
 

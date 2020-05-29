@@ -33,7 +33,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Secrethash\\R8\\": "src"
+			"Secrethash\\R8\\": "src",
+			"Secrethash\\R8\\Model": "src/Models"
         }
     },
     "autoload-dev": {

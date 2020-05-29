@@ -15,12 +15,12 @@ class RateType extends Model
 	/**
 	 * Reviews Types
 	 * 
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 
 	public function ratings()
 	{
-		return $this->belongsToMany(Rating::class, 'rating_rate_type')->withPivot('value');
+		return $this->hasMany(Rating::class, 'rating_rate_type')->withPivot('value');
 	}
 
 }

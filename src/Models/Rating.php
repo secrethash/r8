@@ -13,6 +13,8 @@ class Rating extends Model
 
 	protected $gaurded = ['id','created_at'];
 
+	protected $fillable = ['value'];
+
 	/**
 	 * Reviews
 	 * 
@@ -27,12 +29,12 @@ class Rating extends Model
 	/**
 	 * Rate Types
 	 * 
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 
 	public function type()
 	{
-		return $this->belongsToMany(RateType::class, 'rating_rate_type');
+		return $this->belongsTo(RateType::class);
 	}
 
 	/**

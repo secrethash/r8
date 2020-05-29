@@ -54,7 +54,7 @@ class Review extends Model
      */
     public function ofType($type, $id = null, $sort = 'desc')
     {
-		$reviewType = ReviewType::where('slug', $type)->get();
+		$reviewType = RateType::where('slug', $type)->get();
 		if ($id != null) {
 			$reviews = $reviewType->reviews
 								->where('rateable_id', $id)
