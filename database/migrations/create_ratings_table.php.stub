@@ -9,8 +9,8 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('review_id')->constrained();
-			$table->unsignedBigInteger('type_id');
+			$table->foreignId('review_id')->nullable()->constrained();
+			$table->unsignedBigInteger('type_id')->nullable();
 			$table->float('value');
 			$table->timestamps();
 			

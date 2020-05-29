@@ -34,7 +34,10 @@ php artisan migrate
 
 -----
 
-### Setup a Model
+### Setup the Model
+
+Setup the model that will be reviewed, rated & recommended.
+
 ```php
 <?php
 
@@ -49,6 +52,166 @@ class Post extends Model implements R8
     use R8Trait;
 }
 ```
+
+## Usage
+
+Things will be kept simple. But to understand usage, you must understand the methodology behind it.
+
+#### Methodology
+
+The Methodology used is:
+| Utility |  Relation  |    With   |
+|---------|------------|-----------|
+|Review   |   HasMany  |  Ratings  |
+|Ratings  |  BelongsTo |RatingTypes|
+|Recommend|is a part of|  Reviews  |
+
+### Fetching
+
+Taking Simple Laravel Examples.
+
+`App\Http\Controllers\PostController.php`
+```php
+	public function show($id)
+	{
+		$post = Post::find($id);
+
+		return view('post.show')->with('post', $post);
+	}
+
+```
+
+#### Reviews & Recommend
+
+`resources/views/post/show.blade.php`
+
+```php
+	@foreach($post->reviews as $review)
+		Title: {{ $review->title }}
+		Body: {{ $review->body }}
+		Recommend: {{ $review->recommend }}
+		Author: {{ $review->author->name }}
+	@endforeach
+```
+
+#### Ratings
+
+**NOTE:** A Review must be created first to Create and link One or Many ratings with it.
+
+`resources/views/post/show.blade.php`
+
+```php
+	@foreach($post->reviews as $review)
+		Title: {{ $review->title }}
+		Body: {{ $review->body }}
+		Recommend: {{ $review->recommend }}
+		Author: {{ $review->author->name }}
+
+		@foreach ($review->ratings as $rating)
+			{{ $rating->type->name }}
+			{{ $rating->value }}
+		@endforeach
+	@endforeach
+```
+### Creating
+
+#### Only Review
+
+`App\Http\Controllers\ReviewController.php`
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Post;
+
+class ReviewController {
+
+    /**
+     * Store a newly created resource in storage.
+     *
+	 * @param $id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+	public function store($id, Request $request)
+	{
+		$post = Post::find($id);
+
+		// Create Review
+		$review = $post->reviews()->create([
+            'title' => 'One More Bad Sample Review',
+            'body' => 'This is a another new sample review. This one has 4 Type Reviews.',
+            'recommend' => 'No',
+		]);
+
+		// Associate Author User ID
+        $review->author()->associate(auth()->user()->id);
+		
+	}
+}
+```
+
+#### With Rating
+
+> **Assumption:** A Rating Type has already been created with `'slug' => 'customer-service'`
+
+`App\Http\Controllers\ReviewController.php`
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Post;
+use Secrethash\R8\Models\RateType;
+
+class ReviewController {
+
+    /**
+     * Store a newly created resource in storage.
+     *
+	 * @param $id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+	public function store($id, Request $request)
+	{
+		$post = Post::find($id);
+
+		// Getting the ID
+		$type = RateType::where('slug', 'customer-service')->first();
+
+		// Create Review
+		$review = $post->reviews()->create([
+            'title' => 'One More Bad Sample Review',
+            'body' => 'This is a another new sample review. This one has 4 Type Reviews.',
+            'recommend' => 'Yes', // Enum: accepts 'Yes' or 'No'
+		]);
+
+		// Associate Author User ID
+		$review->author()->associate(auth()->user()->id);
+		
+		// Creating Rating
+		$rating = $review->ratings()->create([
+			'value' => 5
+		]);
+
+		// Associate Rating Type ID
+		$rating->type()->associate($type->id);
+
+		// Saving Everything
+		$review->save();
+		$rating->save();
+		
+	}
+}
+```
+
+### RateTypes
+
+Similarly, `Secrethash\R8\Models\RateType` can be used to create Rating Types like *Product Quality*, *Customer Service*, *Delivery*, etc.
 
 ## Contributions
 
