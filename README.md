@@ -141,9 +141,9 @@ class ReviewController {
 
 		// Create Review
 		$review = $post->reviews()->create([
-            'title' => 'One More Bad Sample Review',
-            'body' => 'This is a another new sample review. This one has 4 Type Reviews.',
-            'recommend' => 'No',
+            		'title' => 'One More Bad Sample Review',
+            		'body' => 'This is a another new sample review. This one has 4 Type Reviews.',
+            		'recommend' => 'No',
 		]);
 
 		// Associate Author User ID
@@ -185,9 +185,9 @@ class ReviewController {
 
 		// Create Review
 		$review = $post->reviews()->create([
-            'title' => 'One More Bad Sample Review',
-            'body' => 'This is a another new sample review. This one has 4 Type Reviews.',
-            'recommend' => 'Yes', // Enum: accepts 'Yes' or 'No'
+            		'title' => 'One More Bad Sample Review',
+            		'body' => 'This is a another new sample review. This one has 4 Type Reviews.',
+            		'recommend' => 'Yes', // Enum: accepts 'Yes' or 'No'
 		]);
 
 		// Associate Author User ID
