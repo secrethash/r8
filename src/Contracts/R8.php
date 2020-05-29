@@ -9,7 +9,7 @@ interface R8
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function review();
+    public function reviews();
 
     /**
      *

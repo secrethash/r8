@@ -1,5 +1,6 @@
 {
-    "name": "secrethash/r8",
+	"name": "secrethash/r8",
+    "type": "package",
     "description": "Review & Rating system for Laravel",
     "keywords": [
 		"rating",
@@ -14,10 +15,6 @@
         {
             "name": "Shashwat Mishra",
             "email": "secrethash96@gmail.com"
-        },
-        {
-            "name": "CodebyRay",
-            "email": "dev@codebyray.com"
         }
     ],
     "minimum-stability": "dev",
@@ -27,7 +24,8 @@
         "illuminate/container": "^5.8|^6.0|^7.0",
         "illuminate/contracts": "^5.8|^6.0|^7.0",
         "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
-        "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0"
+		"illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+		"carbon/carbon": "^2.17"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.3|^7.0|^8.0",

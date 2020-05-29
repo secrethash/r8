@@ -1,6 +1,6 @@
 # R8: Reviews, Ratings and Recomendations
 
-Laravel has always being missing a package like this, that supports dynamic rating with multiple Rating Types (ex. Like in Amazon or any ecommerce platform, Quality Rating, Customer Service Experience Ratings, etc.) with Integrated Reviews and Recomend Functionality.
+Laravel has always been missing a package like this, that supports dynamic rating with multiple Rating Types (ex. Like in Amazon or any ecommerce platform, Quality Rating, Customer Service Experience Ratings, etc.) with Integrated Reviews and Recomend Functionality.
 
 The main Ideology behind this package is to make it easily adaptable for everyone for everyone's use case.
 
@@ -52,12 +52,21 @@ class Post extends Model implements R8
 
 ## Contributions
 
-Contributions are welcomed and appreciated.
+Contributions are welcomed and appreciated. Feel free to create a Pull Request or an Issue.
+
+### Database Structure
+
+As this package is still under development, the database structure might change in future. The structure ER Diagram is provided as [XML File](./db.rd.xml) and also as an Image File.
+![Database Entity Relation Diagram](./database_structure.png)
+
+## License
+
+This project is Licensed under MIT. See the [Licence File](./LICENSE) for more information.
 
 ### Note
 
 > This repository has been forked from [codebyray/laravel-review-rateable](https://github.com/codebyray/laravel-review-rateable.git)
 
-It was forked initially for a headstart and a lot has been changed since then. The whole concept and methodology has been changed.
+It was forked initially as a headstart and a lot has been changed since then. The whole concept and methodology has been changed.
 
 Please note that the orignal code does not matches the code from this repository as a lot has been changed.
