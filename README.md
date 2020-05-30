@@ -2,7 +2,7 @@
 
 Laravel has always been missing a package like this, that supports dynamic rating with multiple Rating Types (ex. Like in Amazon or any e-commerce platform, Quality Rating, Customer Service Experience Ratings, etc.) with Integrated Reviews and Recommend Functionality.
 
-The main Ideology behind this package is to make it easily adaptable for everyone for everyone's use case.
+The main Ideology behind this package is to make it easily adaptable for everyone's use case.
 
 Reviews & Ratings system for Laravel 7. You can rate any of your models.
 
