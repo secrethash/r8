@@ -19,9 +19,7 @@ First, pull in the package through Composer.
 composer require secrethash/r8
 ```
 
-**NOTE: ONLY DEV-MASTER IS AVAILABLE. THIS PACKAGE IS NOT STABLE.**
-
-**_UNDER HEAVY DEVELOPMENT_**
+**NOTE: The `dev-master` is _UNDER HEAVY DEVELOPMENT_**
 
 You will need to publish and run the migrations.
 
@@ -29,7 +27,7 @@ You will need to publish and run the migrations.
 php artisan vendor:publish --provider="Secrethash\R8\R8ServiceProvider" --tag="migrations"
 ```
 
-Run the migration
+Run the migrations
 
 ```
 php artisan migrate
@@ -52,7 +50,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model implements R8
 {
+    
     use R8Trait;
+
 }
 ```
 
