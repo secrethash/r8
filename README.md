@@ -1,10 +1,10 @@
-# R8: Reviews, Ratings and Recomendations
+# R8: Reviews, Ratings and Recommendations
 
-Laravel has always been missing a package like this, that supports dynamic rating with multiple Rating Types (ex. Like in Amazon or any ecommerce platform, Quality Rating, Customer Service Experience Ratings, etc.) with Integrated Reviews and Recomend Functionality.
+Laravel has always been missing a package like this, that supports dynamic rating with multiple Rating Types (ex. Like in Amazon or any e-commerce platform, Quality Rating, Customer Service Experience Ratings, etc.) with Integrated Reviews and Recommend Functionality.
 
 The main Ideology behind this package is to make it easily adaptable for everyone for everyone's use case.
 
-Reviews & Ratings system for laravel 7. You can rate any of your models.
+Reviews & Ratings system for Laravel 7. You can rate any of your models.
 - Custom Rating Types (ex: Product Quality, Delivery Speed, Pricing, etc.) without any limitations.
 - Display Overall and Average Ratings
 - Method Chaining
@@ -86,12 +86,14 @@ Taking Simple Laravel Examples.
 `resources/views/post/show.blade.php`
 
 ```php
-	@foreach($post->reviews as $review)
-		Title: {{ $review->title }}
-		Body: {{ $review->body }}
-		Recommend: {{ $review->recommend }}
-		Author: {{ $review->author->name }}
-	@endforeach
+@foreach($post->reviews as $review)
+		
+	<h2> {{ $review->title }} </h2>
+	<p> {{ $review->body }} </p>
+	<span> Recommended: {{ $review->recommend }} </span>
+	<span> By: {{ $review->author->name }} </span>
+
+@endforeach
 ```
 
 ### Ratings
@@ -101,17 +103,19 @@ Taking Simple Laravel Examples.
 `resources/views/post/show.blade.php`
 
 ```php
-	@foreach($post->reviews as $review)
-		Title: {{ $review->title }}
-		Body: {{ $review->body }}
-		Recommend: {{ $review->recommend }}
-		Author: {{ $review->author->name }}
+@foreach($post->reviews as $review)
 
-		@foreach ($review->ratings as $rating)
-			{{ $rating->type->name }}
-			{{ $rating->value }}
-		@endforeach
+	<h2> {{ $review->title }} </h2>
+	<p> {{ $review->body }} </p>
+	<span> Recommended: {{ $review->recommend }} </span>
+	<span> By: {{ $review->author->name }} </span>
+
+	@foreach ($review->ratings as $rating)
+		{{ $rating->type->name }}
+		{{ $rating->value }}
 	@endforeach
+
+@endforeach
 ```
 ## Create
 
@@ -242,8 +246,8 @@ class ReviewController {
 		$reviews = $post->reviews->count();
 		
 		$approved = $post->reviews
-						 ->where('approved', 1)
-						 ->count();
+				 ->where('approved', 1)
+				 ->count();
 
 		return view('post.show')->with(['post' => $post, 'reviews' => $reviews, 'approved' => $approved]);
 	}
@@ -257,35 +261,28 @@ Assuming the counting will be performed directly in the `blade.php` file.
 `resources/views/post/show.blade.php`
 
 ```php
-	@foreach($post->reviews as $review)
-		
-		...
-		
-		Total Ratings: {{ $review->ratings->count() }}
-		
-		...
-
-	@endforeach
+@foreach($post->reviews as $review)
+	...
+	Total Ratings: {{ $review->ratings->count() }}
+	...
+@endforeach
 ```
 
 ### Average
 
 #### Ratings
 
-Laravel manages collections in a smart way. And as we know that "All multi-result sets returned by Eloquent are instances of the `Illuminate\Database\Eloquent\Collection` object" <sup>[doc][1]</sup> All you need to do is pass in the name of the table (here `value`) in the `average()` collection helper method.
+Laravel manages collections in a smart way. And as we know that "All multi-result sets returned by Eloquent are instances of the `Illuminate\Database\Eloquent\Collection` object" <sup>[Laravel Docs][1]</sup>
+All you need to do is pass in the name of the table (here `value`) in the `average()` collection helper method.
 
 `resources/views/post/show.blade.php`
 
 ```php
-	@foreach($post->reviews as $review)
-		
-		...
-		
-		Average Ratings: {{ $review->ratings->average('value') }}
-
-		...
-
-	@endforeach
+@foreach($post->reviews as $review)
+	...
+	Average Ratings: {{ $review->ratings->average('value') }}
+	...
+@endforeach
 ```
 
 
@@ -300,15 +297,15 @@ As this package is still under development, the database structure might change 
 
 ## License
 
-This project is Licensed under MIT. See the [Licence File](./LICENSE) for more information.
+This project is Licensed under MIT. See the [License File](./LICENSE) for more information.
 
 ### Note
 
 > This repository has been forked from [codebyray/laravel-review-rateable](https://github.com/codebyray/laravel-review-rateable.git)
 
-It was forked initially as a headstart and a lot has been changed since then. The whole concept and methodology has been changed.
+It was forked initially as a head-start and a lot has been changed since then. The whole concept and methodology has been changed.
 
-Please note that the orignal code does not matches the code from this repository as a lot has been changed.
+Please note that the original code does not matches the code from this repository as a lot has been changed.
 
 
 [1]: https://laravel.com/docs/7.x/eloquent-collections "Laravel Docs for Eloquent Collections"
