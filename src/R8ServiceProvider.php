@@ -38,7 +38,7 @@ class R8ServiceProvider extends ServiceProvider
     protected function timestamp($seconds)
     {
         $timestamp = Carbon::now()->addSeconds($seconds)
-                                ->format('Y_m_d_His');
+                            ->format('Y_m_d_His');
         return $timestamp;
     }
 }

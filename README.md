@@ -10,7 +10,7 @@ Reviews & Ratings system for laravel 7. You can rate any of your models.
 - Method Chaining
 - You can set whether the model being rated is recommended.
 
-## Installation
+# Installation
 
 First, pull in the package through Composer.
 
@@ -34,7 +34,7 @@ php artisan migrate
 
 -----
 
-### Setup the Model
+## Setup
 
 Setup the model that will be reviewed, rated & recommended.
 
@@ -53,7 +53,7 @@ class Post extends Model implements R8
 }
 ```
 
-## Usage
+# Usage
 
 Things will be kept simple. But to understand usage, you must understand the methodology behind it.
 
@@ -66,7 +66,7 @@ The Methodology used is:
 |Ratings  |  BelongsTo |RatingTypes|
 |Recommend|is a part of|  Reviews  |
 
-### Fetching
+## Fetch
 
 Taking Simple Laravel Examples.
 
@@ -81,7 +81,7 @@ Taking Simple Laravel Examples.
 
 ```
 
-#### Reviews & Recommend
+### Reviews & Recommend
 
 `resources/views/post/show.blade.php`
 
@@ -94,7 +94,7 @@ Taking Simple Laravel Examples.
 	@endforeach
 ```
 
-#### Ratings
+### Ratings
 
 **NOTE:** A Review must be created first to Create and link One or Many ratings with it.
 
@@ -113,9 +113,9 @@ Taking Simple Laravel Examples.
 		@endforeach
 	@endforeach
 ```
-### Creating
+## Create
 
-#### Only Review
+### Reviews
 
 `App\Http\Controllers\ReviewController.php`
 
@@ -153,9 +153,9 @@ class ReviewController {
 }
 ```
 
-#### With Rating
+### Rating
 
-> **Assumption:** A Rating Type has already been created with `'slug' => 'customer-service'`
+> **Assumption:** A Rating Type has already been created with `'slug' => 'customer-service'`.
 
 `App\Http\Controllers\ReviewController.php`
 
@@ -209,9 +209,85 @@ class ReviewController {
 }
 ```
 
-### RateTypes
+## RateTypes
 
 Similarly, `Secrethash\R8\Models\RateType` can be used to create Rating Types like *Product Quality*, *Customer Service*, *Delivery*, etc.
+
+|Fillable|  Description |
+|--------|--------------|
+|  slug  |Sluggish Name |
+|  name  |   Full Name  |
+
+## Other Operations
+
+To keep things simple, Operations like Counting Reviews and Ratings are done through well defined relations, the Laravel Way.
+
+### Counting
+
+#### Reviews
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Post;
+
+class ReviewController {
+
+	public function show($id)
+	{
+		$post = Post::find($id);
+
+		$reviews = $post->reviews->count();
+		
+		$approved = $post->reviews
+						 ->where('approved', 1)
+						 ->count();
+
+		return view('post.show')->with(['post' => $post, 'reviews' => $reviews, 'approved' => $approved]);
+	}
+}
+```
+
+#### Ratings
+
+Assuming the counting will be performed directly in the `blade.php` file.
+
+`resources/views/post/show.blade.php`
+
+```php
+	@foreach($post->reviews as $review)
+		
+		...
+		
+		Total Ratings: {{ $review->ratings->count() }}
+		
+		...
+
+	@endforeach
+```
+
+### Average
+
+#### Ratings
+
+Laravel manages collections in a smart way. And as we know that "All multi-result sets returned by Eloquent are instances of the `Illuminate\Database\Eloquent\Collection` object" <sup>[doc][1]</sup> All you need to do is pass in the name of the table (here `value`) in the `average()` collection helper method.
+
+`resources/views/post/show.blade.php`
+
+```php
+	@foreach($post->reviews as $review)
+		
+		...
+		
+		Average Ratings: {{ $review->ratings->average('value') }}
+
+		...
+
+	@endforeach
+```
+
 
 ## Contributions
 
@@ -233,3 +309,6 @@ This project is Licensed under MIT. See the [Licence File](./LICENSE) for more i
 It was forked initially as a headstart and a lot has been changed since then. The whole concept and methodology has been changed.
 
 Please note that the orignal code does not matches the code from this repository as a lot has been changed.
+
+
+[1]: https://laravel.com/docs/7.x/eloquent-collections "Laravel Docs for Eloquent Collections"

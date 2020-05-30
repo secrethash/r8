@@ -16,7 +16,7 @@ class Rating extends Model
 	protected $fillable = ['value'];
 
 	/**
-	 * Reviews
+	 * Reviews Relationship
 	 * 
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
@@ -27,7 +27,7 @@ class Rating extends Model
 	}
 	
 	/**
-	 * Rate Types
+	 * Rate Types Relationship
 	 * 
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
@@ -36,16 +36,5 @@ class Rating extends Model
 	{
 		return $this->belongsTo(RateType::class);
 	}
-
-	/**
-	 * Count the number of Ratings
-	 * 
-	 * 
-	 */
-	public function count()
-	{
-		//
-	}
-	
 
 }
