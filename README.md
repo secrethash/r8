@@ -1,6 +1,6 @@
 # R8: Reviews, Ratings and Recommendations
 
-[![Latest Stable Version](https://poser.pugx.org/secrethash/r8/v)](//packagist.org/packages/secrethash/r8) [![Total Downloads](https://poser.pugx.org/secrethash/r8/downloads)](//packagist.org/packages/secrethash/r8) [![Latest Unstable Version](https://poser.pugx.org/secrethash/r8/v/unstable)](//packagist.org/packages/secrethash/r8) [![License](https://poser.pugx.org/secrethash/r8/license)](./LICENSE)
+[![Latest Stable Version](https://poser.pugx.org/secrethash/r8/v)](//packagist.org/packages/secrethash/r8) [![Total Downloads](https://poser.pugx.org/secrethash/r8/downloads)](//packagist.org/packages/secrethash/r8) [![Dependents](https://poser.pugx.org/secrethash/r8/dependents)](//packagist.org/packages/secrethash/r8) [![Latest Unstable Version](https://poser.pugx.org/secrethash/r8/v/unstable)](//packagist.org/packages/secrethash/r8) [![License](https://poser.pugx.org/secrethash/r8/license)](./LICENSE)
 
 Laravel has always been missing a package like this, that supports dynamic rating with multiple Rating Types (ex. Like in Amazon or any e-commerce platform, Quality Rating, Customer Service Experience Ratings, etc.) with Integrated Reviews and Recommend Functionality.
 
