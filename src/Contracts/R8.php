@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 interface R8
 {
     /**
-	 * Reviews Ralationship
-	 * 
+     * Reviews Ralationship
+     *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function reviews();
-
 }

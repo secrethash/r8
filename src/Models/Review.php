@@ -24,17 +24,17 @@ class Review extends Model
     public function rateable()
     {
         return $this->morphTo();
-	}
-	
+    }
+
     /**
-	 * Ratings Relationship
-	 * 
+     * Ratings Relationship
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function ratings()
     {
         return $this->hasMany(Rating::class);
-	}
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
@@ -43,5 +43,4 @@ class Review extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
 }

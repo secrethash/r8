@@ -1,9 +1,19 @@
-CHANGELOG
-===
+# Changelog
 
-This changelog contains all notable change of the laravel-review-rateable package
+All notable changes to this project will be documented in this file.
 
-6-19-2019 - Added Laravel 5.8 support
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-9-05-2019 - Added Laravel 6.0 support
+## [Unreleased]
 
+## [0.1.1-beta] - 2020-05-30
+
+-   Initial Beta Release.
+
+### Added
+
+-   Laravel 7 Support
+-   Updated Database Structure
+-   Rating Types
+-   Documentation

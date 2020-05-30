@@ -8,9 +8,9 @@ class CreateRateTypesTable extends Migration
     public function up()
     {
         Schema::create('rate_types', function (Blueprint $table) {
-			$table->id();
-			$table->string('slug');
-			$table->string('name');
+            $table->id();
+            $table->string('slug');
+            $table->string('name');
             $table->timestamps();
         });
     }

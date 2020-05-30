@@ -5,10 +5,11 @@ Laravel has always been missing a package like this, that supports dynamic ratin
 The main Ideology behind this package is to make it easily adaptable for everyone for everyone's use case.
 
 Reviews & Ratings system for Laravel 7. You can rate any of your models.
-- Custom Rating Types (ex: Product Quality, Delivery Speed, Pricing, etc.) without any limitations.
-- Display Overall and Average Ratings
-- Method Chaining
-- You can set whether the model being rated is recommended.
+
+-   Custom Rating Types (ex: Product Quality, Delivery Speed, Pricing, etc.) without any limitations.
+-   Display Overall and Average Ratings
+-   Method Chaining
+-   You can set whether the model being rated is recommended.
 
 # Installation
 
@@ -17,22 +18,24 @@ First, pull in the package through Composer.
 ```
 composer require secrethash/r8
 ```
+
 **NOTE: ONLY DEV-MASTER IS AVAILABLE. THIS PACKAGE IS NOT STABLE.**
 
-***UNDER HEAVY DEVELOPMENT***
-
+**_UNDER HEAVY DEVELOPMENT_**
 
 You will need to publish and run the migrations.
+
 ```
 php artisan vendor:publish --provider="Secrethash\R8\R8ServiceProvider" --tag="migrations"
 ```
 
 Run the migration
+
 ```
 php artisan migrate
 ```
 
------
+---
 
 ## Setup
 
@@ -60,17 +63,18 @@ Things will be kept simple. But to understand usage, you must understand the met
 #### Methodology
 
 The Methodology used is:
-| Utility |  Relation  |    With   |
+| Utility | Relation | With |
 |---------|------------|-----------|
-|Review   |   HasMany  |  Ratings  |
-|Ratings  |  BelongsTo |RatingTypes|
-|Recommend|is a part of|  Reviews  |
+|Review | HasMany | Ratings |
+|Ratings | BelongsTo |RatingTypes|
+|Recommend|is a part of| Reviews |
 
 ## Fetch
 
 Taking Simple Laravel Examples.
 
 `App\Http\Controllers\PostController.php`
+
 ```php
 	public function show($id)
 	{
@@ -87,7 +91,7 @@ Taking Simple Laravel Examples.
 
 ```php
 @foreach($post->reviews as $review)
-		
+
 	<h2> {{ $review->title }} </h2>
 	<p> {{ $review->body }} </p>
 	<span> Recommended: {{ $review->recommend }} </span>
@@ -117,6 +121,7 @@ Taking Simple Laravel Examples.
 
 @endforeach
 ```
+
 ## Create
 
 ### Reviews
@@ -152,7 +157,7 @@ class ReviewController {
 
 		// Associate Author User ID
         $review->author()->associate(auth()->user()->id);
-		
+
 	}
 }
 ```
@@ -196,7 +201,7 @@ class ReviewController {
 
 		// Associate Author User ID
 		$review->author()->associate(auth()->user()->id);
-		
+
 		// Creating Rating
 		$rating = $review->ratings()->create([
 			'value' => 5
@@ -208,19 +213,19 @@ class ReviewController {
 		// Saving Everything
 		$review->save();
 		$rating->save();
-		
+
 	}
 }
 ```
 
 ## RateTypes
 
-Similarly, `Secrethash\R8\Models\RateType` can be used to create Rating Types like *Product Quality*, *Customer Service*, *Delivery*, etc.
+Similarly, `Secrethash\R8\Models\RateType` can be used to create Rating Types like _Product Quality_, _Customer Service_, _Delivery_, etc.
 
-|Fillable|  Description |
-|--------|--------------|
-|  slug  |Sluggish Name |
-|  name  |   Full Name  |
+| Fillable | Description   |
+| -------- | ------------- |
+| slug     | Sluggish Name |
+| name     | Full Name     |
 
 ## Other Operations
 
@@ -244,7 +249,7 @@ class ReviewController {
 		$post = Post::find($id);
 
 		$reviews = $post->reviews->count();
-		
+
 		$approved = $post->reviews
 				 ->where('approved', 1)
 				 ->count();
@@ -285,7 +290,6 @@ All you need to do is pass in the name of the table (here `value`) in the `avera
 @endforeach
 ```
 
-
 ## Contributions
 
 Contributions are welcomed and appreciated. Feel free to create a Pull Request or an Issue.
@@ -306,6 +310,5 @@ This project is Licensed under MIT. See the [License File](./LICENSE) for more i
 It was forked initially as a head-start and a lot has been changed since then. The whole concept and methodology has been changed.
 
 Please note that the original code does not matches the code from this repository as a lot has been changed.
-
 
 [1]: https://laravel.com/docs/7.x/eloquent-collections "Laravel Docs for Eloquent Collections"
