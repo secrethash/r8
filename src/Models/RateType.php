@@ -10,7 +10,7 @@ class RateType extends Model
 
     protected $table = "rate_types";
 
-    protected $gaurded = ['id', 'created_at'];
+    protected $guarded = ['id', 'created_at'];
 
     /**
      * Reviews Types
